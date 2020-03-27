@@ -22,8 +22,7 @@ I am a math PhD student in the University of Göttingen, Germany. My current res
 
 - Pablo Sierra from Argentina
 
-- Mayank Pandav from Gujarat, India: 
-I live in India , I'm working as a fullstack developer including react ,react native, graphql, relay js, AWS , [email](mpandav1998@gmail.com), 
+- Mayank Pandav from Gujarat, India:  I'm working as a fullstack developer including react ,react native, graphql, relay js, AWS , [email](mpandav1998@gmail.com), 
 [github](https://github.com/mayankpandav)
 
 - Esperanza Buitrago from Bogotá, Colombia
