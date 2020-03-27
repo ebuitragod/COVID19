@@ -18,7 +18,12 @@ I am a math PhD student in the University of Göttingen, Germany. My current res
 [email](ljulava@uni-goettingen.de)
 [twitter](https://twitter.com/LauJula)
 
-- Karthik from Singapure
+- Karthik from Singapore
+I am a software engineer/architect, living in Singapore. I have worked on telecom/finance/insurance and health tech engineering teams for design and development of software and platforms.
+[email](kalakkal@gmail.com)
+[twitter](https://twitter.com/_kkarthik)
+[github](https://github.com/kkarthik19)
+[linkedin](https://www.linkedin.com/in/karthikeyan-kanapathy-b2928424/)
 
 - Pablo Sierra from Argentina
 
