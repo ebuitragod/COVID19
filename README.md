@@ -13,7 +13,7 @@ Main repo
 
 ### Team members
 
-- Laura Jula from Bogotá, Colombia
+- Laura Jula from Bogotá, Colombia: 
 I am a math PhD student in the University of Göttingen, Germany. My current research is focused on change point problems and HMM techniques with application to biological problems, in particular to Ion Channels in the cells. Other interests include Machine learning and biostatistics.
 [email](ljulava@uni-goettingen.de)
 [twitter](https://twitter.com/LauJula)
@@ -21,6 +21,10 @@ I am a math PhD student in the University of Göttingen, Germany. My current res
 - Karthik from Singapure
 
 - Pablo Sierra from Argentina
+
+- Mayank Pandav from Gujarat, India: 
+I live in India , I'm working as a fullstack developer including react ,react native, graphql, relay js, AWS , [email](mpandav1998@gmail.com), 
+[github](https://github.com/mayankpandav)
 
 - Esperanza Buitrago from Bogotá, Colombia
 I am a mathematician from Colombia. 
