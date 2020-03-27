@@ -1,0 +1,4 @@
+[tracker]
+host = https://coronavirus-tracker-api.herokuapp.com/
+listsources = v2/sources
+getrecent = v2/locations
