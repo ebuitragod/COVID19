@@ -37,7 +37,19 @@ def LocationLoad(request):
 
 	responseValue=[]
 
+
 	for source in resp.json()["sources"]:
+		loadDate = datetime.date.today()
+		sourceId = 'tracker-api.{}'.format(source);
+
+		foundObjects = Location.objects.filter(source = sourceId, loadedDate = loadDate).count()
+
+		if foundObjects > 0:
+			print('Source Id :{} has been loaded already for date: {} with count:{}'.format(sourceId, loadDate, foundObjects))
+			continue;
+
+		print('Loading for sourceId:{} for date:{}'.format(sourceId, loadDate));
+
 		val='{}{}?source={}'.format(host,getrecentapipath,source);
 		resourceresp = requests.get(val)
 
@@ -55,14 +67,14 @@ def LocationLoad(request):
 			caseInfo = locationFound['latest']
 			createdVal = datetime.datetime.utcnow()
 
-			Location.objects.update_or_create(source = 'tracker-api.{}'.format(source),
+			Location.objects.update_or_create(source = sourceId,
 			country_code =locationFound['country_code'],
 			country = locationFound['country'],
 			state = locationFound['province'],
 			region = locationFound['county'] if hasattr(locationFound, 'county') else '',
 			latitude = float(countryInfo['latitude']) if countryInfo['latitude'] else 0,
 			longitude= float(countryInfo['longitude']) if countryInfo['longitude'] else 0,
-			loadedDate = datetime.date.today(),
+			loadedDate = loadDate,
 			defaults = {    
 				'cases' : int(caseInfo['confirmed']) if caseInfo['confirmed'] else 0,
 				'deaths' : int(caseInfo['deaths']) if caseInfo['deaths'] else 0,
