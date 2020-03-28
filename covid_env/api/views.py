@@ -53,17 +53,21 @@ def LocationLoad(request):
 		for locationFound in locationDataFromSource:
 			countryInfo = locationFound['coordinates']
 			caseInfo = locationFound['latest']
-			Location.objects.create(source = 'tracker-api.{}'.format(source),
+			createdVal = datetime.datetime.utcnow()
+			Location.objects.update_or_create(source = 'tracker-api.{}'.format(source),
 			country_code =locationFound['country_code'],
 			country = locationFound['country'],
 			state = locationFound['province'],
 			region = locationFound['county'] if hasattr(locationFound, 'county') else '',
 			latitude = float(countryInfo['latitude']) if countryInfo['latitude'] else 0,
 			longitude= float(countryInfo['longitude']) if countryInfo['longitude'] else 0,
-			cases = int(caseInfo['confirmed']) if caseInfo['confirmed'] else 0,
-			deaths = int(caseInfo['deaths']) if caseInfo['deaths'] else 0,
-			recovered = int(caseInfo['recovered']) if caseInfo['recovered'] else 0,
-			loadedDate = datetime.date.today()
+			loadedDate = datetime.date.today(),
+			defaults = {    
+				'cases' : int(caseInfo['confirmed']) if caseInfo['confirmed'] else 0,
+				'deaths' : int(caseInfo['deaths']) if caseInfo['deaths'] else 0,
+				'recovered' : int(caseInfo['recovered']) if caseInfo['recovered'] else 0,
+				'created_at' : createdVal
+			}
 			)
 
 		responseValue.append(recentdata);
