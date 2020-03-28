@@ -122,6 +122,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #tracker settings 
-TRACKERHOST='https://coronavirus-tracker-api.herokuapp.com/'
-TRACKERLISTAPI='v2/sources'
-TRACKERGETLOCATIONAPI='v2/locations'
+TRACKERHOST = 'https://coronavirus-tracker-api.herokuapp.com/'
+TRACKERLISTAPI = 'v2/sources'
+TRACKERGETLOCATIONAPI = 'v2/locations'
+
+NOVALCOVID_TRACKER_HOST = 'https://corona.lmao.ninja/'
+NOVALCOVID_COUNTRY_API = 'countries'

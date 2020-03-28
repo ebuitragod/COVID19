@@ -31,7 +31,59 @@ def LocationLoad(request):
 	responseValue = LoadTracker();
 	responseValue = [] if not responseValue else responseValue;
 
+	novalTrackerResponse = LoadNovalTracker();
+	if novalTrackerResponse:
+		responseValue.append(novalTrackerResponse);
+
 	return JsonResponse(responseValue, safe=False)
+
+def LoadNovalTracker():
+	host = settings.NOVALCOVID_TRACKER_HOST
+	apipath = settings.NOVALCOVID_COUNTRY_API
+
+	responseValue = []
+	loadDate = datetime.date.today()
+	sourceId = 'novaldata-api.data';
+	foundObjects = Location.objects.filter(source = sourceId, loadedDate = loadDate).count()
+
+	if foundObjects > 0:
+		print('NovalCovidData: Source Id :{} has been loaded already for date: {} with count:{}'.format(sourceId, loadDate, foundObjects))
+		return responseValue;
+
+	resp = requests.get(host+apipath);
+	if resp.status_code != 200:
+		raise ApiError('NovalCovidData: Cannot Get Response: {}'.format(resp.status_code))
+
+	responsedata=resp.json();
+	for locationFound in responsedata:
+		print(locationFound);
+		countryInfo = locationFound['countryInfo']
+		createdVal = datetime.datetime.utcnow()
+
+		Location.objects.update_or_create(source = sourceId,
+		country_code =countryInfo['iso3'],
+		country = locationFound['country'],
+		state = '',
+		region = '',
+		latitude = float(countryInfo['lat']) if countryInfo['lat'] else 0,
+		longitude= float(countryInfo['long']) if countryInfo['long'] else 0,
+		loadedDate = loadDate,
+		defaults = {    
+			'cases' : int(locationFound['cases']) if locationFound['cases'] else 0,
+			'deaths' : int(locationFound['deaths']) if locationFound['deaths'] else 0,
+			'recovered' : int(locationFound['recovered']) if locationFound['recovered'] else 0,
+			'todayCases': int(locationFound['todayCases']) if locationFound['todayCases'] else 0,
+			'totalDeaths': int(locationFound['todayDeaths']) if locationFound['todayDeaths'] else 0,
+			'active': int(locationFound['active']) if locationFound['active'] else 0,
+			'critical': int(locationFound['critical']) if locationFound['critical'] else 0,
+			'created_at' : createdVal
+		}
+		)
+		responseValue.append('source:{}, country:{}, cases:{}, deaths:{}, recovered:{}, active:{}, critical:{}'.format(sourceId, 
+			locationFound['country'], locationFound['cases'], locationFound['deaths'], locationFound['recovered'],
+			locationFound['active'],  locationFound['critical'] ));
+
+	return responseValue;
 
 
 def LoadTracker():
@@ -40,7 +92,7 @@ def LoadTracker():
 	getrecentapipath=settings.TRACKERGETLOCATIONAPI
 	resp = requests.get(host+listapipath)
 	if resp.status_code != 200:
-		raise ApiError('Cannot list sources: {}'.format(resp.status_code))
+		raise ApiError('TrackerData: Cannot list sources: {}'.format(resp.status_code))
 
 	responseValue=[]
 
@@ -51,10 +103,10 @@ def LoadTracker():
 		foundObjects = Location.objects.filter(source = sourceId, loadedDate = loadDate).count()
 
 		if foundObjects > 0:
-			print('Source Id :{} has been loaded already for date: {} with count:{}'.format(sourceId, loadDate, foundObjects))
+			print('TrackerData: Source Id :{} has been loaded already for date: {} with count:{}'.format(sourceId, loadDate, foundObjects))
 			continue;
 
-		print('Loading for sourceId:{} for date:{}'.format(sourceId, loadDate));
+		print('TrackerData: Loading for sourceId:{} for date:{}'.format(sourceId, loadDate));
 
 		val='{}{}?source={}'.format(host,getrecentapipath,source);
 		resourceresp = requests.get(val)
