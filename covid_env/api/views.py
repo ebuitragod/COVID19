@@ -76,6 +76,8 @@ def LoadNovalTracker():
 			'totalDeaths': int(locationFound['todayDeaths']) if locationFound['todayDeaths'] else 0,
 			'active': int(locationFound['active']) if locationFound['active'] else 0,
 			'critical': int(locationFound['critical']) if locationFound['critical'] else 0,
+			'casesPerOneMillion': float(locationFound['casesPerOneMillion']) if locationFound['casesPerOneMillion'] else 0,
+			'deathsPerOneMillion': float(locationFound['deathsPerOneMillion']) if locationFound['deathsPerOneMillion'] else 0,
 			'created_at' : createdVal
 		}
 		)
