@@ -18,7 +18,12 @@ I am a math PhD student in the University of Göttingen, Germany. My current res
 [email](ljulava@uni-goettingen.de)
 [twitter](https://twitter.com/LauJula)
 
-- Karthik from Singapure
+- Karthik from Singapore
+I am a software engineer/architect, living in Singapore. I have worked on telecom/finance/insurance and health tech engineering teams for design and development of software and platforms.
+[email](kalakkal@gmail.com)
+[twitter](https://twitter.com/_kkarthik)
+[github](https://github.com/kkarthik19)
+[linkedin](https://www.linkedin.com/in/karthikeyan-kanapathy-b2928424/)
 
 - Pablo Sierra from Argentina
 
@@ -55,9 +60,18 @@ Later on, we study the mathematical models in order to see the impact of the dec
 Finally, we run different models on wheather given a decision a the curve up to that day worked or not. 
 
 ## Challenges we ran into
+One of the most difficult ones was to get the data as detailed as we could find. Actually, finding APIs was harsh, but we could find several resources that we could get into. 
 
 ## Accomplishments that we're proud of
 
 ## What we learned
+It seems like there is very little mathematical modeling of the COVID19, very little literature and very little use; Although, lots of data, lots of visualization, lots of analysis. We learned to take all that knowledge and put it together into one predictive modeling. 
+
+Also, we learned to work with people in 5 very different timezones. That was a great experience. 
 
 ## What's next for Measurement contents: Good or not? 
+Well, once we get whethe a measurement is good or not, what is remaining is to understand what is the best path. Undestand it taking other cultural atributes: a measurment makes sense inside the society that is being decided. 
+
+#### Sources:
+Modelos: https://github.com/epimath/param-estimation-SIR
+APIs: https://covid-19-apis.postman.com/
