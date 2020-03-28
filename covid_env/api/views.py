@@ -28,6 +28,13 @@ def LocationLoad(request):
 	"""
 	This would help to fetch all data and store it
 	"""
+	responseValue = LoadTracker();
+	responseValue = [] if not responseValue else responseValue;
+
+	return JsonResponse(responseValue, safe=False)
+
+
+def LoadTracker():
 	host=settings.TRACKERHOST
 	listapipath=settings.TRACKERLISTAPI
 	getrecentapipath=settings.TRACKERGETLOCATIONAPI
@@ -36,7 +43,6 @@ def LocationLoad(request):
 		raise ApiError('Cannot list sources: {}'.format(resp.status_code))
 
 	responseValue=[]
-
 
 	for source in resp.json()["sources"]:
 		loadDate = datetime.date.today()
@@ -82,7 +88,6 @@ def LocationLoad(request):
 				'created_at' : createdVal
 			}
 			)
+			responseValue.append(recentdata);
 
-		responseValue.append(recentdata);
-
-	return JsonResponse(responseValue, safe=False)
+		return responseValue;
