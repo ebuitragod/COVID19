@@ -1,27 +1,25 @@
 #from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
 import requests
 from django.conf import settings
 import datetime
 from django.core import serializers
 
-
 from .serializers import LocationSerializer
 from .models import Location
-# views here.
 
-@api_view(['GET'])
-def LocationList(request):
+class LocationListView(APIView):
 	"""
 	List all Locations
 	"""
-
-	locations = Location.objects.all().order_by('source')
-	print('Cound found: {}'.format(locations.count()))
-	data = serializers.serialize("json", locations)
-	return HttpResponse(data, content_type='application/json');
+	def get(self, request, format=None):
+		locations = Location.objects.all();
+		serializer = LocationSerializer(locations, many=True)
+		return Response(serializer.data)
 
 @api_view(['GET'])
 def LocationLoad(request):

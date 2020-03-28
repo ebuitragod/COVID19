@@ -1,2 +1,5 @@
-Flask==1.1.1
+Django==2.2.10
+django-extensions==2.2.5
+django-filter==2.2.0
+djangorestframework==3.10.3
 requests==2.21.0

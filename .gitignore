@@ -58,3 +58,5 @@ db.sqlite3
 #vim swap files
 *.swp
 *.swo
+__pycache__/
+*.pyc
