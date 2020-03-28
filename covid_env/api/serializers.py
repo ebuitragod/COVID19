@@ -10,4 +10,4 @@ class LocationSerializer(serializers.ModelSerializer):
 		
 	class Meta:
 		model = Location
-		fields = ('source', 'country_id', 'country', 'country_code', 'country_codeInfo', 'state', 'latitude', 'longitude', 'cases', 'todayCases', 'deaths', 'totalDeaths', 'recovered', 'active', 'critical', 'casesPerOneMillion', 'deathsPerOneMillion', 'loadedDate', 'created_at')
+		fields = ('source', 'country_id', 'country', 'country_code', 'country_codeInfo', 'state', 'region', 'latitude', 'longitude', 'cases', 'todayCases', 'deaths', 'totalDeaths', 'recovered', 'active', 'critical', 'casesPerOneMillion', 'deathsPerOneMillion', 'loadedDate', 'created_at')
