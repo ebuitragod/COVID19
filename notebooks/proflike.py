@@ -44,10 +44,10 @@ def proflike (params, profindex, cost_func, times, data, perrange = 0.5, numpoin
 
 	fit_params = params.tolist() #make a copy of params so we won't change the origianl list
 	fit_params.pop(profindex)
-	print('Starting profile...')
+	print 'Starting profile...'
 	for i in range(len(profrange)):
 		for j in profrange[i]:
-			print(i, j)
+			print i, j
 			optimizer = optimize.minimize(profcost, fit_params, args=(j, profindex, data, times, cost_func), method='Nelder-Mead')
 			fit_params = np.abs(optimizer.x).tolist() #save current fitted params as starting values for next round
 			#print optimizer.fun
