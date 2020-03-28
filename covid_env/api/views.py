@@ -5,23 +5,23 @@ from rest_framework.decorators import api_view
 import requests
 from django.conf import settings
 import datetime
+from django.core import serializers
 
 
 from .serializers import LocationSerializer
 from .models import Location
 # views here.
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def LocationList(request):
 	"""
 	List all Locations
 	"""
 
 	locations = Location.objects.all().order_by('source')
-	serializer_class = LocationSerializer(locations)
-	return JsonResponse(serializer_class.data, safe=False)
-	#return JsonResponse(serializer_class.data, safe=False)
-
+	print('Cound found: {}'.format(locations.count()))
+	data = serializers.serialize("json", locations)
+	return HttpResponse(data, content_type='application/json');
 
 @api_view(['GET'])
 def LocationLoad(request):
@@ -54,6 +54,7 @@ def LocationLoad(request):
 			countryInfo = locationFound['coordinates']
 			caseInfo = locationFound['latest']
 			createdVal = datetime.datetime.utcnow()
+
 			Location.objects.update_or_create(source = 'tracker-api.{}'.format(source),
 			country_code =locationFound['country_code'],
 			country = locationFound['country'],
@@ -71,7 +72,5 @@ def LocationLoad(request):
 			)
 
 		responseValue.append(recentdata);
-
-		print('Source : summary:{} {}'.format(responsedata['latest'], responsedata['locations']));
 
 	return JsonResponse(responseValue, safe=False)
