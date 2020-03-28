@@ -72,6 +72,6 @@ Also, we learned to work with people in 5 very different timezones. That was a g
 ## What's next for Measurement contents: Good or not? 
 Well, once we get whethe a measurement is good or not, what is remaining is to understand what is the best path. Undestand it taking other cultural atributes: a measurment makes sense inside the society that is being decided. 
 
-# Sources:
+#### Sources:
 Modelos: https://github.com/epimath/param-estimation-SIR
 APIs: https://covid-19-apis.postman.com/
