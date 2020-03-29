@@ -87,3 +87,12 @@ Sample API Response
   }
 ]
 ```
+
+### Download Covid19 Data
+
+To Download the Covid19 Data from the `http://localhost:8000/all` into a json file, run the following
+This will save the data in `Covid19Data.json` file.
+
+```$
+python DownloadCovidData.py
+```
