@@ -93,6 +93,12 @@ Sample API Response
   }
 ]
 ```
+#### Sources:
+
+
+[This is from] (https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=csbs) API from csbs source.
+[This is from] (https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=jhu) API from jhu source particularly
+
 
 ### Download Covid19 Data
 
