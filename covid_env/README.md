@@ -13,6 +13,12 @@ $pip install -r requirements.txt
 $python manage.py migrate
 ```
 
+you might need to do 
+```$
+pip install django-rest-swagger
+```
+as well. 
+
 ### Application Run
 
 To run the web application, the following needs to be executed. The application would run in port `8000` in localhost
