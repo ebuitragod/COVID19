@@ -4,5 +4,5 @@ django-filter==2.2.0
 djangorestframework==3.10.3
 django-rest-swagger==2.2.0
 requests==2.21.0
-pip==20.0.2
+pip==21.1
 python==3.7.4
